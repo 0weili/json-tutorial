@@ -19,6 +19,8 @@ static int lept_parse_null(lept_context* c, lept_value* v) {
     EXPECT(c, 'n');
     if (c->json[0] != 'u' || c->json[1] != 'l' || c->json[2] != 'l')
         return LEPT_PARSE_INVALID_VALUE;
+    if(c->json[4] != '\0')
+        return LEPT_PARSE_ROOT_NOT_SINGULAR; 
     c->json += 3;
     v->type = LEPT_NULL;
     return LEPT_PARSE_OK;
